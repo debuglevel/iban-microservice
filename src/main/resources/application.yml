@@ -1,7 +1,4 @@
 app:
-  greetings:
-    default-language: "null" # note that "null" must be enclosed by quotation marks, as it would be unset otherwise
-    unknown-language: "unknown" # note that key should not be camelCase, as uppercase characters may lead to problems in configuration binding
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
@@ -9,7 +6,7 @@ app:
 
 micronaut:
   application:
-    name: greeter
+    name: iban
     instance:
       id: ${random.shortuuid} # instance ID should be set random if Consul registration is active to avoid collisions (default ID would be the port number)
   server:
@@ -18,8 +15,8 @@ micronaut:
       enabled: true # default: false
   router:
     static-resources:
-      # YAML file will be available at http://localhost:8080/swagger/greeter-microservice-0.1.yml
-      # where "greeter-microservice-0.1" is derived from the Title and Version attributes of @OpenAPIDefinition
+      # YAML file will be available at http://localhost:8080/swagger/iban-microservice-0.1.yml
+      # where "iban-microservice-0.1" is derived from the Title and Version attributes of @OpenAPIDefinition
       # TODO: does not seem to work if security is enabled and Auth-Header set?
       swagger:
         paths: classpath:META-INF/swagger
