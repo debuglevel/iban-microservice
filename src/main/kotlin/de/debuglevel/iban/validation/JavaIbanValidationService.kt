@@ -7,7 +7,7 @@ import org.apache.commons.validator.routines.IBANValidator
 import javax.inject.Singleton
 
 @Singleton
-@Requires(property = "app.iban.validation-backend", value = "java-iban")
+@Requires(property = "app.iban.validation.backend", value = "java-iban")
 class JavaIbanValidationService : ValidationService() {
     private val logger = KotlinLogging.logger {}
 

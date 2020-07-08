@@ -1,8 +1,9 @@
 app:
   iban:
-    validation-backend: "apache-commons"
-    #validation-backend: "iban4j"
-    #validation-backend: "java-iban"
+    validation:
+      backend: "apache-commons"
+      #backend: "iban4j"
+      #backend: "java-iban"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
@@ -26,7 +27,7 @@ micronaut:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
   security:
-    enabled: true # default: false
+    enabled: false # default: false
 #  http:
 #    services: # manual service discovery
 #      foo: # service ID
