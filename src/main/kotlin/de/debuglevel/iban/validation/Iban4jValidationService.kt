@@ -7,10 +7,10 @@ import javax.inject.Singleton
 
 @Singleton
 @Requires(property = "app.iban.validation-backend", value = "iban4j")
-class Iban4jValidationService : ValidationService {
+class Iban4jValidationService : ValidationService() {
     private val logger = KotlinLogging.logger {}
 
-    override fun validate(iban: String): Boolean {
+    override fun doValidate(iban: String): Boolean {
         return try {
             IbanUtil.validate(iban)
             true

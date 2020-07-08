@@ -7,12 +7,12 @@ import javax.inject.Singleton
 
 @Singleton
 @Requires(property = "app.iban.validation-backend", value = "apache-commons")
-class ApacheCommonsValidationService : ValidationService {
+class ApacheCommonsValidationService : ValidationService() {
     private val logger = KotlinLogging.logger {}
 
     private val ibanValidator = IBANValidator.getInstance()
 
-    override fun validate(iban: String): Boolean {
+    override fun doValidate(iban: String): Boolean {
         return ibanValidator.isValid(iban)
     }
 }
