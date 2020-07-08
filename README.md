@@ -13,35 +13,22 @@ This is a simple REST microservice to validate IBANs.
 
 ## Swagger / OpenAPI
 
-There is an OpenAPI (former: Swagger) specification created, which is available at <http://localhost:8080/swagger/greeter-microservice-0.1.yml>, `build/tmp/kapt3/classes/main/META-INF/swagger/` in the source directory and `META-INF/swagger/` in the jar file. It can easily be pasted into the [Swagger Editor](https://editor.swagger.io) which provides a live demo for [Swagger UI](https://swagger.io/tools/swagger-ui/), but also offers to create client libraries via [Swagger Codegen](https://swagger.io/tools/swagger-codegen/).
+There is an OpenAPI (former: Swagger) specification created, which is available at <http://localhost:8080/swagger/iban-microservice-0.1.yml>, `build/tmp/kapt3/classes/main/META-INF/swagger/` in the source directory and `META-INF/swagger/` in the jar file. It can easily be pasted into the [Swagger Editor](https://editor.swagger.io) which provides a live demo for [Swagger UI](https://swagger.io/tools/swagger-ui/), but also offers to create client libraries via [Swagger Codegen](https://swagger.io/tools/swagger-codegen/).
 
-## Get greeting
-
-To get an appropriate greeting for a person, send a GET request to the service:
-
+## Validate IBAN
+To validate an IBAN, it has to be POSTed as JSON payload in the body to the service
+```shell script
+$ curl -X POST -d '{"iban":"DE89370400440532013000"}' -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8080/validation/
 ```
-$ curl -X GET http://localhost/greetings/Johnny%20Knoxville
+which produces this JSON response
+```json
 {
-  "greeting" : "You did not provide a language, but I'll try english: Hello, Johnny Knoxville!"
+  "iban" : "DE89370400440532013000",
+  "valid" : true
 }
 ```
 
-You can also define a language as query parameter:
-
-```
-$ curl -X GET http://localhost/greetings/Johnny%20Knoxville?language=de_DE
-{
-  "greeting" : "Grüß Gott, Johnny Knoxville"
-}
-```
-
-## Add greeting
-
-In this example, a greeting can also be POSTed. This way, the payload is transferred in the body as JSON (which is often a better idea than putting it in the URL or parameters, due to URL encoding issues).
-
-```
-$ curl -X POST -d '{"name":"Max", "language":"de_DE"}' -H "Content-Type: application/json" http://localhost/greetings/
-```
+There is no GET method because passing strings in URLs just leads to too much problems (e.g. whitespaces or awkward characters).
 
 # Configuration
 
