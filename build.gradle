@@ -85,6 +85,11 @@ dependencies {
     implementation "io.github.microutils:kotlin-logging:$kotlinLoggingVersion"
     runtimeOnly "ch.qos.logback:logback-classic:$logbackVersion"
 
+    // IBAN libraries
+    implementation "commons-validator:commons-validator:$apacheCommonsValidatorVersion"
+    implementation "org.iban4j:iban4j:$iban4jVersion"
+    implementation "nl.garvelink.oss:iban:$javaIbanVersion"
+
 
     // Micronaut Bill of Materials, which defines dependency versions
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")

@@ -1,4 +1,8 @@
 app:
+  iban:
+    validation-backend: "apache-commons"
+    #validation-backend: "iban4j"
+    #validation-backend: "java-iban"
   security:
     configurable-credential-authentication:
       username: "SECRET_USERNAME"
