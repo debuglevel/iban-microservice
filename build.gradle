@@ -22,10 +22,10 @@ plugins {
     // TODO: configure allopen to only open @Validated classes
     id 'org.jetbrains.kotlin.plugin.allopen'
 
-    // Check updated dependencies with "gradle dependencyUpdates".
+    // Check updated dependencies with "./gradlew dependencyUpdates".
     id 'com.github.ben-manes.versions'
 
-    // Release version with "gradle release"
+    // Release version with "./gradlew release"
     id 'net.researchgate.release'
 
     // Create start scripts
@@ -66,7 +66,6 @@ dependencies {
     // If no specific version is defined, it might be provided by the Micronaut BOM
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     //implementation "org.jetbrains.kotlin:kotlin-reflect
 
     // Tests
@@ -250,9 +249,9 @@ tasks.withType(JavaExec) {
     jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
     if (gradle.startParameter.continuous) {
         systemProperties(
-                'micronaut.io.watch.restart':'true',
-                'micronaut.io.watch.enabled':'true',
-                "micronaut.io.watch.paths":"src/main"
+                'micronaut.io.watch.restart': 'true',
+                'micronaut.io.watch.enabled': 'true',
+                "micronaut.io.watch.paths": "src/main"
         )
     }
 }
